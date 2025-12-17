@@ -66,7 +66,7 @@ const AppSidebar = () => {
         >
           <Link to="/" className={`${!isExpanded && !isMobileOpen ? "lg:hidden" : ""}`}>
             <h1 className="text-lg font-bold tracking-wide text-white">
-              MMM DESIGN
+              Google Meridian
             </h1>
           </Link>
 

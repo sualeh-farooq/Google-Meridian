@@ -57,7 +57,7 @@ const AppHeader: React.FC = () => {
           </button>
 
           <Link to="/" className="lg:hidden flex-0">
-            <span className="font-semibold text-gray-800 text-base text-center">MMM DESIGN</span>
+            <span className="font-semibold text-gray-800 text-base text-center">Google Meridian</span>
           </Link>
 
           <div className="lg:hidden">

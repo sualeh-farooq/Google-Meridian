@@ -16,7 +16,7 @@ export default function AuthLayout({
             <GridShape />
             <div className="flex flex-col items-center max-w-xs">
               <Link to="/" className="block mb-4">
-                <span className="font-semibold text-white text-2xl">MMM DESIGN</span>
+                <span className="font-semibold text-white text-2xl">Google Meridian</span>
               </Link>
               <p className="text-center text-gray-400">
                 Clean Admin Dashboard Template
