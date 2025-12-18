@@ -2,7 +2,7 @@ import { useState } from "react";
 import ComponentCard from "../../common/ComponentCard";
 import Label from "../Label";
 import Input from "../input/InputField";
-import Select from "../Select";
+import CustomSelect from "../../ui/select/CustomSelect";
 import { Calendar, Eye, EyeOff, Clock } from "lucide-react";
 import Flatpickr from "react-flatpickr";
 
@@ -34,7 +34,8 @@ export default function DefaultInputs() {
         </div>
         <div>
           <Label>Select Input</Label>
-          <Select
+          <CustomSelect
+            value=""
             options={options}
             placeholder="Select an option"
             onChange={handleSelectChange}

@@ -1,11 +1,15 @@
 import { useCallback } from "react";
 import { Link, useLocation } from "react-router";
 import {
+  Brain,
   Building,
   LayoutGrid,
   Users,
 } from "lucide-react";
 import { useSidebar } from "../context/SidebarContext";
+import logo from "../../public/logo.png"
+import logoImg from "../../public/logo-img.png"
+
 
 const navItems = [
   {
@@ -24,7 +28,7 @@ const navItems = [
     path: "/users",
   },
     {
-    icon: <LayoutGrid size={22} />,
+    icon: <Brain size={22} />,
     name: "ML Models",
     path: "/mlmodels",
   },
@@ -60,27 +64,57 @@ const AppSidebar = () => {
         lg:translate-x-0`}
       >
         {/* Logo Section */}
-        <div
-          className={`h-16 flex items-center px-4 border-b border-slate-800
-          ${!isExpanded && !isMobileOpen ? "lg:justify-center" : "justify-between"}`}
-        >
-          <Link to="/" className={`${!isExpanded && !isMobileOpen ? "lg:hidden" : ""}`}>
-            <h1 className="text-lg font-bold tracking-wide text-white">
-              Google Meridian
-            </h1>
-          </Link>
+      {/* Logo Section */}
+<div
+  className={`h-16 flex items-center px-4 border-b border-slate-800
+  ${!isExpanded && !isMobileOpen ? "lg:justify-start" : "justify-between"}`}
+>
+  <Link
+    to="/"
+    className="flex items-center gap-2"
+  >
+    {/* Expanded / Mobile → Full Logo */}
+    {(isExpanded || isMobileOpen) && (
+      <img
+        src={logo}
+        alt="Logo"
+        className="h-40 pt-3 w-auto"
+      />
+    )}
 
-          {/* Close button for mobile */}
-          <button
-            onClick={toggleMobileSidebar}
-            className="lg:hidden text-gray-400 hover:text-white p-2"
-            aria-label="Close sidebar"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fillRule="evenodd" clipRule="evenodd" d="M6.21967 7.28131C5.92678 6.98841 5.92678 6.51354 6.21967 6.22065C6.51256 5.92775 6.98744 5.92775 7.28033 6.22065L11.999 10.9393L16.7176 6.22078C17.0105 5.92789 17.4854 5.92788 17.7782 6.22078C18.0711 6.51367 18.0711 6.98855 17.7782 7.28144L13.0597 12L17.7782 16.7186C18.0711 17.0115 18.0711 17.4863 17.7782 17.7792C17.4854 18.0721 17.0105 18.0721 16.7176 17.7792L11.999 13.0607L7.28033 17.7794C6.98744 18.0722 6.51256 18.0722 6.21967 17.7794C5.92678 17.4865 5.92678 17.0116 6.21967 16.7187L10.9384 12L6.21967 7.28131Z" fill="currentColor"/>
-            </svg>
-          </button>
-        </div>
+    {/* Collapsed → Icon Logo */}
+    {!isExpanded && !isMobileOpen && (
+      <img
+        src={logoImg}
+        alt="Logo Icon"
+        className="h-20 w-auto"
+      />
+    )}
+  </Link>
+
+  {/* Close button for mobile */}
+  <button
+    onClick={toggleMobileSidebar}
+    className="lg:hidden text-gray-400 hover:text-white p-2"
+    aria-label="Close sidebar"
+  >
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M6.21967 7.28131C5.92678 6.98841 5.92678 6.51354 6.21967 6.22065C6.51256 5.92775 6.98744 5.92775 7.28033 6.22065L11.999 10.9393L16.7176 6.22078C17.0105 5.92789 17.4854 5.92788 17.7782 6.22078C18.0711 6.51367 18.0711 6.98855 17.7782 7.28144L13.0597 12L17.7782 16.7186C18.0711 17.0115 18.0711 17.4863 17.7782 17.7792C17.4854 18.0721 17.0105 18.0721 16.7176 17.7792L11.999 13.0607L7.28033 17.7794C6.98744 18.0722 6.51256 18.0722 6.21967 17.7794C5.92678 17.4865 5.92678 17.0116 6.21967 16.7187L10.9384 12L6.21967 7.28131Z"
+        fill="currentColor"
+      />
+    </svg>
+  </button>
+</div>
+
 
         {/* Menu Section */}
         <div className="flex-1 overflow-y-auto py-6 no-scrollbar">

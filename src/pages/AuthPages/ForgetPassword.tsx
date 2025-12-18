@@ -50,14 +50,14 @@ export default function ForgetPass() {
                 <div className="flex flex-col gap-3 w-full">
                   <Link
                     to="/signin"
-                    className="w-full px-4 py-3 text-sm font-semibold rounded-lg transition bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 text-center"
+                    className="w-full px-4 py-3 text-sm font-semibold rounded-lg transition bg-white text-gray-900 border border-gray-300 hover:bg-gray-50 text-center"
                   >
                     Return to sign in
                   </Link>
                  <Link to={"/checkyouremail"}>
                   <button
                     type="submit"
-                    className="w-full px-4 py-3 text-sm font-semibold rounded-lg transition bg-gray-800 text-white shadow-theme-xs hover:bg-gray-950 disabled:bg-brand-300"
+                    className="w-full px-4 py-3 text-sm font-semibold rounded-lg transition bg-slate-900 text-white shadow-theme-xs hover:bg-slate-950 disabled:bg-brand-300"
                   >
                     Continue
                   </button>

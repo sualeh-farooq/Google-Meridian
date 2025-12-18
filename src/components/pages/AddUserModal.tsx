@@ -1,5 +1,6 @@
 import { X } from "lucide-react";
 import { useState } from "react";
+import CustomSelect from "../ui/select/CustomSelect";
 
 interface AddUserModalProps {
   isOpen: boolean;
@@ -94,43 +95,35 @@ export default function AddUserModal({
               />
             )}
 
-            <select
-              name="role"
+            <CustomSelect
               value={formData.role}
-              onChange={handleChange}
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-900 outline-none"
-            >
-              <option value="">Select Role</option>
-              <option value="Admin">Admin</option>
-              <option value="Manager">Manager</option>
-              <option value="Role A">Role A</option>
-              <option value="Role B">Role B</option>
-            </select>
+              options={[
+                { value: "Admin", label: "Admin" },
+                { value: "Manager", label: "Manager" },
+                { value: "Role A", label: "Role A" },
+                { value: "Role B", label: "Role B" }
+              ]}
+              placeholder="Select Role"
+              onChange={(value) => setFormData({ ...formData, role: value })}
+            />
 
-            <select
-              name="company"
+            <CustomSelect
               value={formData.company}
-              onChange={handleChange}
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-900 outline-none"
-            >
-              <option value="">Select Company</option>
-              {companies.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
+              options={companies.map((c) => ({ value: c, label: c }))}
+              placeholder="Select Company"
+              onChange={(value) => setFormData({ ...formData, company: value })}
+            />
 
-            <select
-              name="status"
+            <CustomSelect
               value={formData.status}
-              onChange={handleChange}
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-900 outline-none"
-            >
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-              <option value="Pending">Pending</option>
-            </select>
+              options={[
+                { value: "Active", label: "Active" },
+                { value: "Inactive", label: "Inactive" },
+                { value: "Pending", label: "Pending" }
+              ]}
+              placeholder="Select Status"
+              onChange={(value) => setFormData({ ...formData, status: value })}
+            />
 
             {/* Actions (SAME AS DELETE MODAL) */}
             <div className="flex gap-3 pt-4">

@@ -3,6 +3,8 @@ interface Step1GeneralInfoProps {
   updateFormData: (data: any) => void;
 }
 
+import CustomSelect from '../ui/select/CustomSelect';
+
 export default function Step1GeneralInfo({
   formData,
   updateFormData,
@@ -59,20 +61,18 @@ export default function Step1GeneralInfo({
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Code Version
         </label>
-        <select
+        <CustomSelect
           value={formData.codeVersion || ""}
-          onChange={(e) =>
-            updateFormData({ ...formData, codeVersion: e.target.value })
+          options={[
+            { value: "v1.0", label: "v1.0" },
+            { value: "v1.1", label: "v1.1" },
+            { value: "v2.0", label: "v2.0" }
+          ]}
+          placeholder="Select code version"
+          onChange={(value) =>
+            updateFormData({ ...formData, codeVersion: value })
           }
-          className="w-full px-4 py-2.5 rounded-lg border border-gray-300
-            focus:border-blue-900 focus:ring-2 focus:ring-blue-900/20
-            outline-none transition bg-white"
-        >
-          <option value="">Select code version</option>
-          <option value="v1.0">v1.0</option>
-          <option value="v1.1">v1.1</option>
-          <option value="v2.0">v2.0</option>
-        </select>
+        />
       </div>
     </div>
   );

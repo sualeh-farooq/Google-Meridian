@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ComponentCard from "../../common/ComponentCard";
 import Label from "../Label";
-import Select from "../Select";
+import CustomSelect from "../../ui/select/CustomSelect";
 import MultiSelect from "../MultiSelect";
 
 export default function SelectInputs() {
@@ -27,7 +27,8 @@ export default function SelectInputs() {
       <div className="space-y-6">
         <div>
           <Label>Select Input</Label>
-          <Select
+          <CustomSelect
+            value=""
             options={options}
             placeholder="Select Option"
             onChange={handleSelectChange}

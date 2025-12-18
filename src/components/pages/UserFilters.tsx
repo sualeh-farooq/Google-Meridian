@@ -1,4 +1,5 @@
 import { Search } from "lucide-react";
+import CustomSelect from "../ui/select/CustomSelect";
 
 interface UserFiltersProps {
   searchQuery: string;
@@ -23,6 +24,29 @@ export default function UserFilters({
   onStatusChange,
   companies,
 }: UserFiltersProps) {
+  // Company options
+  const companyOptions = [
+    { value: "", label: "All Companies" },
+    ...companies.map(company => ({ value: company, label: company }))
+  ];
+
+  // Role options
+  const roleOptions = [
+    { value: "", label: "All Roles" },
+    { value: "Admin", label: "Admin" },
+    { value: "Role A", label: "Role A" },
+    { value: "Role B", label: "Role B" },
+    { value: "Manager", label: "Manager" }
+  ];
+
+  // Status options
+  const statusOptions = [
+    { value: "", label: "All Status" },
+    { value: "Active", label: "Active" },
+    { value: "Inactive", label: "Inactive" },
+    { value: "Pending", label: "Pending" }
+  ];
+
   return (
     <div className="mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {/* Search */}
@@ -38,43 +62,28 @@ export default function UserFilters({
       </div>
 
       {/* Company Dropdown */}
-      <select
+      <CustomSelect
         value={selectedCompany}
-        onChange={(e) => onCompanyChange(e.target.value)}
-        className="rounded-xl border border-gray-300 bg-gray-50 py-2.5 px-4 text-sm focus:border-blue-900 focus:ring-1 focus:ring-blue-900 outline-none transition"
-      >
-        <option value="">All Companies</option>
-        {companies.map((company) => (
-          <option key={company} value={company}>
-            {company}
-          </option>
-        ))}
-      </select>
+        onChange={onCompanyChange}
+        options={companyOptions}
+        placeholder="All Companies"
+      />
 
       {/* Role Filter */}
-      <select
+      <CustomSelect
         value={selectedRole}
-        onChange={(e) => onRoleChange(e.target.value)}
-        className="rounded-xl border border-gray-300 bg-gray-50 py-2.5 px-4 text-sm focus:border-blue-900 focus:ring-1 focus:ring-blue-900 outline-none transition"
-      >
-        <option value="">All Roles</option>
-        <option value="Admin">Admin</option>
-        <option value="Role A">Role A</option>
-        <option value="Role B">Role B</option>
-        <option value="Manager">Manager</option>
-      </select>
+        onChange={onRoleChange}
+        options={roleOptions}
+        placeholder="All Roles"
+      />
 
       {/* Status Filter */}
-      <select
+      <CustomSelect
         value={selectedStatus}
-        onChange={(e) => onStatusChange(e.target.value)}
-        className="rounded-xl border border-gray-300 bg-gray-50 py-2.5 px-4 text-sm focus:border-blue-900 focus:ring-1 focus:ring-blue-900 outline-none transition"
-      >
-        <option value="">All Status</option>
-        <option value="Active">Active</option>
-        <option value="Inactive">Inactive</option>
-        <option value="Pending">Pending</option>
-      </select>
+        onChange={onStatusChange}
+        options={statusOptions}
+        placeholder="All Status"
+      />
     </div>
   );
 }

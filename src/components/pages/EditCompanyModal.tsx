@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CustomSelect from "../ui/select/CustomSelect";
 
 interface Company {
   id: string | number;
@@ -74,16 +75,15 @@ export default function EditCompanyModal({
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Frequency
           </label>
-          <select
-            name="frequency"
+          <CustomSelect
             value={formData.frequency}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option>Daily Row</option>
-            <option>Weekly Row</option>
-            <option>Monthly Row</option>
-          </select>
+            options={[
+              { value: "Daily Row", label: "Daily Row" },
+              { value: "Weekly Row", label: "Weekly Row" },
+              { value: "Monthly Row", label: "Monthly Row" }
+            ]}
+            onChange={(value) => setFormData({ ...formData, frequency: value })}
+          />
         </div>
 
         <div className="flex gap-3 pt-6">
